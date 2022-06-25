@@ -1,0 +1,77 @@
+$rootUnit: 16px !default;
+$breakpoint: 768px;
+
+@function removeUnit($value){
+  @return ($value / ($value * 0 + 1));
+}
+
+@function rem($value, $base: $rootUnit){
+  @return removeUnit($value / $base) * 1rem;
+}
+
+@function em($value, $base: $rootUnit){
+  @return removeUnit($value / $base) * 1em;
+}
+
+// 믹스인
+@mixin clearfix{
+  &::after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin autoMargin($marginX: auto){
+  margin-left: $marginX;
+  margin-right: $marginX;
+}
+
+@mixin boxFull($width: 100vw){
+  width: $width;
+  position: relative;
+  left: 50%;
+  margin-left: -$width / 2;
+}
+
+@mixin boxFixed($width: 460px, $paddingX: 0){
+  width: $width;
+  padding-left: $paddingX;
+  padding-right: $paddingX;
+  @include autoMargin;
+  @content;
+}
+
+@mixin sm{
+  @media screen and (max-width: $breakpoint - 1){
+    @content;
+  }
+}
+@mixin md{
+  @media screen and (min-width: $breakpoint){
+    @content;
+  }
+}
+@mixin flexbox($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin a11y{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  visibility: hidden;
+  clip: rect(0,0,0,0);
+  clip-path: inset(50%);
+}
+
+@mixin customOutline{
+  box-shadow: 0 0 0 2px $outline;
+  border-radius: 2px;
+}

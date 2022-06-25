@@ -1,0 +1,62 @@
+
+.loginState{
+  position: relative;
+
+  .formControl__checkbox{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+
+    &:focus + .formControl__label{
+      .checkboxIr{
+        box-shadow: 0 0 0 2px $primary;
+        border-radius: 3px;
+      }
+    }
+    &:checked + .formControl__label{
+      .checkboxIr{
+        background-image: url(./../images/checked.svg);
+      }
+    }
+  }
+
+  .formControl__label{
+    cursor: pointer;
+    @include flexbox(row, flex-start, center);
+
+    .checkboxIr{
+      width: em(25px);
+      height: em(25px);
+      margin-right: em(5px);
+      background: url(./../images/unchecked.svg) no-repeat;
+    }
+  }
+}
+
+.loginButton{
+  background-color: $primary;
+  color: $default;
+  
+  .formControl__button{
+    width: 100%;
+    padding: em(19px) em(16px);
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+
+// 로그인 상태유지 및 IP 보안
+.userSelectInfo{
+  order: 1;
+  background-color: yellow;
+  @include flexbox;
+}
+.ipSecurityLink{
+  margin-left: auto;
+}
+.loginButton{
+  background-color: pink;
+  margin: em(10px) 0;
+}

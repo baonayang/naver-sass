@@ -1,0 +1,192 @@
+// 컨테이너
+.container{
+  @include flexbox(column);
+  min-height: 100vh;
+  
+  @include sm{
+    @include boxFixed(100%, 20px);
+  }
+  @include md{
+    @include boxFixed(460px);
+  }
+}
+// 헤더
+.header{
+  &__logo{
+    @include autoMargin;
+    @include sm{
+      width: percentage(164px / 320px);
+      margin-top: em(70px);
+      margin-bottom: em(45px);
+    }
+    @include md{
+      width: 230px;
+      margin-top: em(100px);
+      margin-bottom: em(50px);
+    }
+
+    a{
+      display: block;
+    }
+  }
+}
+
+// 메인
+.main{
+  flex-grow: 1;
+}
+// 아웃라인 재설정
+:focus{
+  outline: 0;
+}
+:focus-visible{
+  @include customOutline;
+}
+
+// 로그인 폼
+.loginForm{
+  legend{
+    @include a11y;
+  }
+
+  &__container{
+    @include flexbox(column);
+  }
+}
+
+// 아이디 및 비밀번호 입력서식
+.userEmail, .userPassword{
+  margin-bottom: em(10px);
+}
+
+.formControl{
+  // 아이디 및 비밀번호 컨테이너
+  &User{
+    border: 1px solid $secondary;
+    padding: em(9px);
+
+    &:focus-within{
+      border-color: $primary;
+    }
+  }
+
+  // 아이디 및 비밀번호 입력서식
+  &__input{
+    width: 100%;
+    padding: em(5px);
+
+    &:focus{
+      outline: 0;
+      background-color: $alpha;
+    }
+  }
+
+  &__input:focus-visible{
+    box-shadow: none;
+  }
+}
+// 에러 메시지
+.errorMessage{
+  color: $warning;
+  display: none;
+}
+.is--invalid .errorMessage{
+  display: block;
+}
+
+// 로그인 상태유지 및 IP 보안
+.userSelectInfo{
+  order: 1;
+  @include flexbox;
+}
+
+// 로그인 상태유지
+.loginState{
+  // 로그인 상태유지 input
+  &__checkbox{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  //로그인 상태유지 label
+  &__label{
+    @include flexbox(row, flex-start, center);
+    cursor: pointer;
+  }
+
+  &__label::before{
+    content: "";
+    display: inline-block;
+    width: em(20px);
+    height: em(20px);
+    background: url(./../images/unchecked.svg) no-repeat;
+    background-size: 100% 100%;
+    margin-right: em(8px);
+  }
+
+  &__checkbox:checked + &__label::before{
+    background-image: url(./../images/checked.svg);
+  }
+
+  &__checkbox:focus + &__label::before{
+    @include customOutline;
+  }
+}
+
+// IP 보안 링크
+.ipSecurityLink{
+  margin-left: auto;
+  text-decoration: none;
+  color: inherit;
+}
+
+// IP 보안 체크박스
+.ipSecurity{
+  // 체크박스 input
+  &__checkbox{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  // 체크박스 label
+  &__label::before{
+    content: "OFF";
+    display: inline-block;
+    width: em(36px);
+    padding: 0 em(4px);
+    font-weight: 700;
+    margin-left: em(8px);
+    color: $secondary;
+    cursor: pointer;
+  }
+
+  &__checkbox:checked + &__label::before{
+    content: "ON";
+    color: $primary;
+  }
+
+  &__checkbox:focus + &__label::before{
+    @include customOutline;
+  }
+}
+
+
+
+
+// 로그인 버튼
+.loginButton{
+  margin: em(10px) 0;
+  background-color: $primary;
+  color: $default;
+
+  .formControl__button{
+    background-color: inherit;
+    color: inherit;
+    width: 100%;
+    padding: em(19px) em(16px);
+  }
+}
